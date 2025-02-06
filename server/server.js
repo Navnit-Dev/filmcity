@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.json());
 
 // MongoDB Connection
-mongoose.connect(process.env.MONGODB_URI)
+mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://sidah39003:hdHfnouFrZFmXeGg@filmcityadmin.6lojh.mongodb.net/FilmCityAdmin?retryWrites=true&w=majority&appName=FilmCityAdmin")
     .then(() => console.log('Connected to MongoDB'))
     .catch(err => console.error('MongoDB connection error:', err));
 
@@ -18,7 +18,7 @@ mongoose.connect(process.env.MONGODB_URI)
 const movieSchema = new mongoose.Schema({
     title: String,
     year: Number,
-    category: String,
+    category: [String],
     rating: Number,
     description: String,
     posterUrl: String,
